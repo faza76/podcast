@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sakai-podcasts-20-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/bundle"/>
+        <dependent-module archiveName="sakai-kernel-util-20-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kernel-util/kernel-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sakai-portal-util-20-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/portal-util_util/portal-util_util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="entitybroker-utils-20-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/utils/utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="sakai-podcasts"/>
+        <property name="java-output-path" value="/podcasts-app/target/classes"/>
+    </wb-module>
+</project-modules>
