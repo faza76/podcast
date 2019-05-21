@@ -27,6 +27,7 @@
         });
       </script>
 
+
   <h:form id="podAdd" enctype="multipart/form-data">
 
     <div>  <!-- Page title and Instructions -->
@@ -54,7 +55,8 @@
       		<td class="reqStarInline">*</td>
  	  		<td><h:outputText value="#{msgs.file_prompt}" /></td>
 			<td>
-			  <sakai:inputFileUpload id="podfile" valueChangeListener="#{podHomeBean.processFileUpload}" accept=".mp3" size="35" />
+			  <sakai:inputFileUpload id="podfile" valueChangeListener="#{podHomeBean.processFileUpload}"
+					accept=".mp3,.m4a,.aac,.ogg,.wma" size="35" />
  	     	</td>
  	      </tr>
  	      <tr>

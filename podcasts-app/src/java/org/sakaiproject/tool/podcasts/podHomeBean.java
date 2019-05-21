@@ -76,6 +76,8 @@ import org.sakaiproject.tool.cover.ToolManager;
 import org.sakaiproject.util.DateFormatterUtil;
 import org.sakaiproject.util.ResourceLoader;
 import org.sakaiproject.util.Validator;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -1686,7 +1688,8 @@ public class podHomeBean {
 	}
 
 	public boolean getErrorOnPage() {
-		return displayNotAudio || displayNoFileErrMsg || displayNoDateErrMsg || displayNoTitleErrMsg || displayInvalidDateErrMsg;
+		//modifikasi
+		return displayNot1Mb || displayNotAudio || displayNoFileErrMsg || displayNoDateErrMsg || displayNoTitleErrMsg || displayInvalidDateErrMsg;
 	}
 
 	/**
@@ -1716,8 +1719,12 @@ public class podHomeBean {
 	private boolean OKtoAdd() {
 		boolean OKtoAdd = true;
   	// modifikasi
-
-		if (!fileContentType.startsWith("audio",0)){
+		if (!(fileContentType.endsWith("mp3") ||
+		fileContentType.endsWith("mpeg") ||
+		fileContentType.endsWith("m4a") ||
+		fileContentType.endsWith("aac") ||
+		fileContentType.endsWith("ogg") ||
+		fileContentType.endsWith("wma"))){
 			log.info(" tidak benar file audio ");
 			displayNotAudio = true;
 			OKtoAdd = false;
