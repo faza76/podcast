@@ -1254,10 +1254,6 @@ public class podHomeBean {
 						fileContents, filename, fileContentType);
 
 				// We're good, no error message need be displayed
-				//modifikasi
-				displayNot1Mb = false;
-			  displayNotAudio = false;
-
 				displayNoFileErrMsg = false;
 				displayNoDateErrMsg = false;
 				displayNoTitleErrMsg = false;
@@ -1367,11 +1363,6 @@ public class podHomeBean {
 			}
 		}
 		filename = "";
-
-		//modifikasi
-		displayNot1Mb = false;
-		displayNotAudio = false;
-		
 		displayNoFileErrMsg = false;
 		displayNoDateErrMsg = false;
 		displayNoTitleErrMsg = false;

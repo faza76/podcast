@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
+
 <%@ taglib uri="http://sakaiproject.org/jsf/sakai" prefix="sakai" %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
@@ -10,7 +11,19 @@
 <f:view> 
 	<sakai:view title="#{msgs.podcast_home_title}" toolCssHref="css/podcaster.css"> 
 	<script type="text/javascript" src="scripts/popupscripts.js"></script>
+	<script type="text/javascript">
+		function playAudio(source) { 
+			var player = document.getElementById("audioPlayer");
+			// var source = document.getElementById("sourceaudio");
+			var sourceP = document.getElementById("audiosource");
 
+  			// player.src = "http://localhost:8082/access/content/group/a33dc27e-77f2-44f9-b291-f6c4e7be0cf0/Podcasts/Podcast.mp3"; 
+  			player.src = source; 
+  			player.load(); 
+  			player.play(); 
+		} 
+
+	</script>
 	<h:form>
 
     <%-- if Resources tool not exist, if instructor, display error message
@@ -71,11 +84,20 @@
 	            <h:outputText value="#{eachPodcast.title}" styleClass="podTitleFormat" />
 
 	            <h:outputText value="#{eachPodcast.description}" />
-            
+	           	<!-- modifikasi -->
+				<audio id ="audioPlayer" controls>
+  					<source id="sourceaudio" src="#{eachPodcast.fileURL}" type="audio/mpeg">
+				</audio>  
+
+				<h:outputText id="audiosource" value="#{eachPodcast.fileURL}" />
     	        <h:panelGroup>
 	 	           <%--  Download link --%>
 	 				<h:outputLink value="#{eachPodcast.fileURL}" styleClass="active" target="#{eachPodcast.newWindow}">
 			 			 <h:outputText value="#{msgs.download}" />
+					</h:outputLink>
+					<!-- modifikasi -->
+					<h:outputLink value="#" styleClass="active" onclick="playAudio('#{eachPodcast.fileURL}');">
+						<h:outputText value="#{msgs.play}" />
 					</h:outputLink>
  
 	              <h:outputText value=" #{msgs.open_paren}#{eachPodcast.size} #{eachPodcast.type}#{msgs.close_paren}" />
@@ -93,6 +115,7 @@
             	        rendered="#{podHomeBean.canUpdateSite || podHomeBean.hasDelAnyPerm || (podHomeBean.hasDelOwnPerm && eachPodcast.author == podHomeBean.userName)}" >
                 	<f:param name="resourceId" value="#{eachPodcast.resourceId}" />
 	              </h:commandLink>
+
     	        </h:panelGroup>
 
 	            <h:panelGroup>
